@@ -13,7 +13,7 @@
     "url": "git+https://github.com/juandejunin/node-express-auth.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Juan Amieva",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/juandejunin/node-express-auth/issues"

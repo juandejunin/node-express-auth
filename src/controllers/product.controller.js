@@ -20,14 +20,31 @@ export const getProducts = async (req, res) => {
 
 }
 
-export const getProductById = (req, res) => {
+export const getProductById = async (req, res) => {
+    const { productId } = req.params;
+  
+    const product = await Product.findById(productId);
+    res.status(200).json(product);
+  };
 
-}
 
-export const updateProductById = (req, res) => {
+  //en req.body se declara new:true de lo contrario mongoose muestra los datos nuevos y lo que necesitamos en este caso son los dato nuevos.
+  export const updateProductById = async (req, res) => {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      req.params.productId,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res.status(204).json(updatedProduct);
+  };
 
-}
-
-export const deleteProductById = (req, res) => {
-
-}
+  export const deleteProductById = async (req, res) => {
+    const { productId } = req.params;
+  
+    await Product.findByIdAndDelete(productId);
+  
+    // code 200 is ok too
+    res.status(200).json();
+  };

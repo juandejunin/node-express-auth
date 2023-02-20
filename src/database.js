@@ -1,19 +1,12 @@
 import mongoose from "mongoose";
+require('dotenv').config()
 
 // import { MONGODB_URI } from "./config.js";
+const BBDD_URI = process.env.BBDD_URI
 
-
-mongoose.connect('mongodb+srv://estudiantes_back:contraseña123@cluster0.ol8cwwg.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(BBDD_URI)
     .then(db => console.log('Db is connected'))
     .catch(error => console.log(error))
-
-
-
-
-
-
-
-
 // try {
 //   const db = await mongoose.connect(MONGODB_URI);
 //   console.log("Database is connected to", db.connection.name);

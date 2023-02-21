@@ -1,6 +1,8 @@
 import app from './app'
 import './database'
+require('dotenv').config()
 
+const PORT = process.env.PORT
 
-app.listen(4000)
-console.log('Server listen on port ', 4000)
+app.listen(PORT)
+console.log('Server listen on port ', `${PORT}`)

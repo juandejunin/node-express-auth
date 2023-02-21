@@ -1,5 +1,5 @@
-import app from './app'
-import './database'
+import app from './src/app'
+import './src/database'
 require('dotenv').config()
 
 const PORT = process.env.PORT

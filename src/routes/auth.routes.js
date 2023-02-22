@@ -4,6 +4,6 @@ import {checkExistingUser, checkExistingRole} from "../middlewares/verifySignup"
 const router = Router()
 
 router.post('/signin', signin)
-router.post('/signup',checkExistingUser,checkExistingRole, signUp)
+router.post('/signup',checkExistingUser, signUp)
 
 export default router

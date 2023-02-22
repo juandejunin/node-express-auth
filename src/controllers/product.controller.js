@@ -3,9 +3,9 @@ import Product from "../models/Product.js";
 export const createProduct = async (req, res) => {
 
     //aplicarndo desestructuración
-    const { name, category, price, imgURL } = req.body
+    const { name, paymentDate, price } = req.body
     //creando un nuevo objeto y guardando el nuevo objeto en una nueva constante
-    const newProduct = new Product({ name, category, price, imgURL })
+    const newProduct = new Product({ name, paymentDate, price })
 
     //utilizando el metodo .save guardamos el objeto en BBDD
     const productSave = await newProduct.save()
@@ -46,5 +46,5 @@ export const getProductById = async (req, res) => {
     await Product.findByIdAndDelete(productId);
   
     // code 200 is ok too
-    res.status(200).json();
+    res.status(200).json({message: 'Delete subscription'});
   };

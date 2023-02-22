@@ -11,12 +11,14 @@ export const signUp = async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body)
 
+    const emailExist = await User.findOne({ email: req.body.email });
+    if (emailExist)
+      return res.status(400).json({ message: "The email already exists" });
+
     // Creating a new User Object
-    const newUser = new User({
-        
+    const newUser = new User({        
         email,
         password: await User.encryptPassword(password)
-
     });
 
     console.log(newUser)
@@ -25,18 +27,13 @@ export const signUp = async (req, res) => {
     console.log(savedUser)
 
 
-    const token = jwt.sign({ id: savedUser._id }, JWT_SECRET_KEY, {
-        expiresIn: 86400
-    })
-
-
-    res.json({ token })
+    res.json({ 'message':'Registered user successfully' })
 
 }
 
 
 export const signin = async (req, res) => {
-    const userFound = await User.findOne({ email: req.body.email }).populate("roles")
+    const userFound = await User.findOne({ email: req.body.email })
     if (!userFound) return res.status(400).json({ message: 'user not found' })
     console.log(userFound)
 

@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 require('dotenv').config()
 mongoose.set('strictQuery', true);
 
-// import { MONGODB_URI } from "./config.js";
 const BBDD_URI = process.env.BBDD_URI
 
 mongoose.connect(BBDD_URI)

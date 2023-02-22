@@ -37,7 +37,7 @@ export const getProductById = async (req, res) => {
         new: true,
       }
     );
-    res.status(204).json(updatedProduct);
+    res.status(204).json({'message':'updated'});
   };
 
   export const deleteProductById = async (req, res) => {

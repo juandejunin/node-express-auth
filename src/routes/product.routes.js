@@ -5,8 +5,8 @@ const router = Router()
 import * as productsCtrl from '../controllers/product.controller'
 
 router.post('/',verifyToken, isModerator, productsCtrl.createProduct)
-router.get('/', verifyToken,productsCtrl.getProducts)
-router.get('/:productId',verifyToken,  productsCtrl.getProductById)
+router.get('/',productsCtrl.getProducts)
+router.get('/:productId', productsCtrl.getProductById)
 router.put('/:productId',verifyToken, isAdmin, productsCtrl.updateProductById)
 router.delete('/:productId',verifyToken, isAdmin, productsCtrl.deleteProductById)
 

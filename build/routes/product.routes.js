@@ -12,8 +12,8 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 var router = (0, _express.Router)();
 router.post('/', _index.verifyToken, _index.isModerator, productsCtrl.createProduct);
-router.get('/', _index.verifyToken, productsCtrl.getProducts);
-router.get('/:productId', _index.verifyToken, productsCtrl.getProductById);
+router.get('/', productsCtrl.getProducts);
+router.get('/:productId', productsCtrl.getProductById);
 router.put('/:productId', _index.verifyToken, _index.isAdmin, productsCtrl.updateProductById);
 router["delete"]('/:productId', _index.verifyToken, _index.isAdmin, productsCtrl.deleteProductById);
 var _default = router;

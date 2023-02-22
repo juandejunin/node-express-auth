@@ -25,7 +25,7 @@ app.get('/', function (req, res) {
     version: app.get('pkg').version
   });
 });
-app.use('/api/products', _product["default"]);
+app.use('/api/subscription', _product["default"]);
 app.use("/api/auth", _authRoutes["default"]);
 app.use('/api/user', _user["default"]);
 var _default = app;

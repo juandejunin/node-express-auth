@@ -12,17 +12,16 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var createProduct = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var _req$body, name, category, price, imgURL, newProduct, productSave;
+    var _req$body, name, paymentDate, price, newProduct, productSave;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           //aplicarndo desestructuración
-          _req$body = req.body, name = _req$body.name, category = _req$body.category, price = _req$body.price, imgURL = _req$body.imgURL; //creando un nuevo objeto y guardando el nuevo objeto en una nueva constante
+          _req$body = req.body, name = _req$body.name, paymentDate = _req$body.paymentDate, price = _req$body.price; //creando un nuevo objeto y guardando el nuevo objeto en una nueva constante
           newProduct = new _Product["default"]({
             name: name,
-            category: category,
-            price: price,
-            imgURL: imgURL
+            paymentDate: paymentDate,
+            price: price
           }); //utilizando el metodo .save guardamos el objeto en BBDD
           _context.next = 4;
           return newProduct.save();
@@ -99,7 +98,9 @@ var updateProductById = /*#__PURE__*/function () {
           });
         case 2:
           updatedProduct = _context4.sent;
-          res.status(204).json(updatedProduct);
+          res.status(204).json({
+            'message': 'updated'
+          });
         case 4:
         case "end":
           return _context4.stop();
@@ -122,7 +123,9 @@ var deleteProductById = /*#__PURE__*/function () {
           return _Product["default"].findByIdAndDelete(productId);
         case 3:
           // code 200 is ok too
-          res.status(200).json();
+          res.status(200).json({
+            message: 'Delete subscription'
+          });
         case 4:
         case "end":
           return _context5.stop();

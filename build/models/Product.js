@@ -12,12 +12,11 @@ var productSchema = new _mongoose["default"].Schema({
     required: true,
     trim: true
   },
-  category: String,
+  paymentDate: Date,
   price: {
     type: Number,
     "default": 0
-  },
-  imgURL: String
+  }
 }, {
   timestamps: true,
   versionKey: false
